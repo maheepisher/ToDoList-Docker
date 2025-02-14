@@ -9,11 +9,8 @@ steps:
 
   # Step 3: Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: [ 'gcloud', 'run', 'deploy', 'maheep-100909435', '--image', 'us-central1-docker.pkg.dev/spheric-basis-438520-q2/maheep-100909435-to-do-list-app/image:$COMMIT_SHA',
-            '--region', 'us-central1',
-            '--platform', 'managed',
-            '--allow-unauthenticated' ]
-    
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'maheep-100909435-to-do-list-app', '--image', 'us-central1-docker.pkg.dev/spheric-basis-438520-q2/maheep-100909435/image:${COMMIT_SHA}', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
